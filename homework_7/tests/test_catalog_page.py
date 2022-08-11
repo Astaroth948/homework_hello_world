@@ -1,4 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
+import allure
 
 from homework_7.pages.catalog_page import CatalogPage
 from homework_7.pages.elements.breadcrumbs import Breadcrumbs
@@ -9,6 +10,9 @@ CATALOG_PATH = 'index.php?route=product/category&language=en-gb&path=20'
 PAGE_TITLE = "Desktops"
 
 
+@allure.parent_suite('Проверки страницы каталогов')
+@allure.epic('Проверки страницы каталогов')
+@allure.title('Проверка наличия основных элементов страницы')
 def test_catalog_page(driver: WebDriver) -> None:
     header = Header(driver)
     navigation_menu = NavigationMenu(driver)

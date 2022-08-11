@@ -1,4 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
+import allure
 
 from homework_7.pages.elements.breadcrumbs import Breadcrumbs
 from homework_7.pages.elements.header import Header
@@ -9,6 +10,9 @@ REGISTER_PATH = 'index.php?route=account/register'
 PAGE_TITLE = "Register Account"
 
 
+@allure.parent_suite('Проверки страницы регистрации пользователя')
+@allure.epic('Проверки страницы регистрации пользователя')
+@allure.title('Проверка наличия основных элементов страницы')
 def test_register_page(driver: WebDriver) -> None:
     header = Header(driver)
     navigation_menu = NavigationMenu(driver)

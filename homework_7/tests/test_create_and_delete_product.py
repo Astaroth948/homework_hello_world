@@ -1,4 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
+import allure
 
 from homework_7.pages.admin_page import AdminPage
 from homework_7.pages.elements.admin_filter_product import AdminFilterProduct
@@ -8,6 +9,9 @@ from homework_7.pages.login_admin_page import LoginAdminPage
 LOGIN_ADMIN_PATH = 'admin/'
 
 
+@allure.sub_suite('Проверки админки')
+@allure.epic('Проверки админки')
+@allure.title('Проверка создания и удаления товара')
 def test_create_and_delete_product(driver: WebDriver) -> None:
     login_admin_page = LoginAdminPage(driver)
     admin_menu = AdminMenu(driver)
