@@ -1,4 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
+import allure
 
 from homework_7.pages.elements.breadcrumbs import Breadcrumbs
 from homework_7.pages.elements.header import Header
@@ -9,6 +10,9 @@ PRODUCT_PATH = 'index.php?route=product/product&product_id=43'
 PAGE_TITLE = "MacBook"
 
 
+@allure.parent_suite('Проверки страницы товара')
+@allure.epic('Проверки страницы товара')
+@allure.title('Проверка наличия основных элементов страницы')
 def test_product_page(driver: WebDriver) -> None:
     header = Header(driver)
     navigation_menu = NavigationMenu(driver)

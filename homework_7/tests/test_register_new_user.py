@@ -1,4 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
+import allure
 
 from homework_7.pages.admin_page import AdminPage
 from homework_7.pages.elements.admin_menu import AdminMenu
@@ -9,6 +10,9 @@ REGISTER_PATH = 'index.php?route=account/register'
 LOGIN_ADMIN_PATH = 'admin/'
 
 
+@allure.parent_suite('Проверки страницы регистрации пользователя')
+@allure.epic('Проверки страницы регистрации пользователя')
+@allure.title('Проверка регистрации и удаления нового пользователя')
 def test_register_new_user(driver: WebDriver) -> None:
     register_page = RegisterPage(driver)
     login_admin_page = LoginAdminPage(driver)
@@ -41,3 +45,4 @@ def test_register_new_user(driver: WebDriver) -> None:
     admin_page._accept_alert()
     admin_page.assert_text_in_success_alert(
         text='Success: You have modified customers!')
+    admin_page.assert_quantity_rows(quantity=0)

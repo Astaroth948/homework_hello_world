@@ -1,4 +1,5 @@
 from selenium.webdriver.remote.webdriver import WebDriver
+import allure
 
 from homework_7.pages.main_page import MainPage
 from homework_7.pages.elements.header import Header
@@ -7,6 +8,9 @@ from homework_7.pages.elements.navigation_menu import NavigationMenu
 PAGE_TITLE = "Your Store"
 
 
+@allure.parent_suite('Проверки главной страницы')
+@allure.epic('Проверки главной страницы')
+@allure.title('Проверка наличия основных элементов страницы')
 def test_main_page(driver: WebDriver) -> None:
     header = Header(driver)
     navigation_menu = NavigationMenu(driver)
